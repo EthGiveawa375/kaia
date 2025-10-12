@@ -124,7 +124,7 @@ func BenchmarkFastXOR4KB(b *testing.B) { benchmarkFastXOR(b, 4096) }
 func benchmarkFastXOR(b *testing.B, size int) {
 	p, q := make([]byte, size), make([]byte, size)
 
-	for i := 0; i < b.N; i++ {
+	for b.Loop() {
 		XORBytes(p, p, q)
 	}
 }
@@ -137,7 +137,7 @@ func BenchmarkBaseXOR4KB(b *testing.B) { benchmarkBaseXOR(b, 4096) }
 func benchmarkBaseXOR(b *testing.B, size int) {
 	p, q := make([]byte, size), make([]byte, size)
 
-	for i := 0; i < b.N; i++ {
+	for b.Loop() {
 		safeXORBytes(p, p, q)
 	}
 }
@@ -150,7 +150,7 @@ func BenchmarkFastAND4KB(b *testing.B) { benchmarkFastAND(b, 4096) }
 func benchmarkFastAND(b *testing.B, size int) {
 	p, q := make([]byte, size), make([]byte, size)
 
-	for i := 0; i < b.N; i++ {
+	for b.Loop() {
 		ANDBytes(p, p, q)
 	}
 }
@@ -163,7 +163,7 @@ func BenchmarkBaseAND4KB(b *testing.B) { benchmarkBaseAND(b, 4096) }
 func benchmarkBaseAND(b *testing.B, size int) {
 	p, q := make([]byte, size), make([]byte, size)
 
-	for i := 0; i < b.N; i++ {
+	for b.Loop() {
 		safeANDBytes(p, p, q)
 	}
 }
@@ -176,7 +176,7 @@ func BenchmarkFastOR4KB(b *testing.B) { benchmarkFastOR(b, 4096) }
 func benchmarkFastOR(b *testing.B, size int) {
 	p, q := make([]byte, size), make([]byte, size)
 
-	for i := 0; i < b.N; i++ {
+	for b.Loop() {
 		ORBytes(p, p, q)
 	}
 }
@@ -189,7 +189,7 @@ func BenchmarkBaseOR4KB(b *testing.B) { benchmarkBaseOR(b, 4096) }
 func benchmarkBaseOR(b *testing.B, size int) {
 	p, q := make([]byte, size), make([]byte, size)
 
-	for i := 0; i < b.N; i++ {
+	for b.Loop() {
 		safeORBytes(p, p, q)
 	}
 }
@@ -201,7 +201,7 @@ func BenchmarkFastTest4KB(b *testing.B) { benchmarkFastTest(b, 4096) }
 
 func benchmarkFastTest(b *testing.B, size int) {
 	p := make([]byte, size)
-	for i := 0; i < b.N; i++ {
+	for b.Loop() {
 		TestBytes(p)
 	}
 }
@@ -213,7 +213,7 @@ func BenchmarkBaseTest4KB(b *testing.B) { benchmarkBaseTest(b, 4096) }
 
 func benchmarkBaseTest(b *testing.B, size int) {
 	p := make([]byte, size)
-	for i := 0; i < b.N; i++ {
+	for b.Loop() {
 		safeTestBytes(p)
 	}
 }
